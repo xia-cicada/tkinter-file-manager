@@ -33,9 +33,13 @@ class IconUtils:
 
         return icon_path
 
-    def get_icon_by_ext(self, ext: str, size_name = 'small'):
+    def get_icon_by_ext(self, ext: str, size_name ='small'):
         ext = ext.lower()
         icon_name = EXTENSION_ICON_MAP.get(ext, 'file')
+        return self._get_icon_image(icon_name, size_name)
+
+    def get_icon_by_name(self, icon_name: str, size_name ='small'):
+        icon_name = icon_name.lower()
         return self._get_icon_image(icon_name, size_name)
 
 common_icons = IconUtils()

@@ -4,6 +4,8 @@ from core.file_operations import get_dir_content
 from tkinter_file_manager.gui.components.file_list import FileListPanel
 from pathlib import Path
 from tkinter_file_manager.gui.event_bus import signal_path_change
+from tkinter_file_manager.gui.utils.ui_button import UIButton
+
 
 class MainWindow(ctk.CTk):
     def __init__(self):
@@ -31,7 +33,20 @@ class MainWindow(ctk.CTk):
         self._navigate_to(self.current_path)
 
     def _create_address_bar(self):
-        pass
+        address_bar = ctk.CTkFrame(
+            master=self.main_panel,
+            corner_radius=6,
+            bg_color="#ffffff",
+        )
+        address_bar.pack(fill="x",padx=5,pady=5)
+        content = ctk.CTkFrame(address_bar)
+        content.pack(fill="both", expand=True)
+        pre_button = UIButton(content, "left")
+        forward_button = UIButton(content, "right")
+        refresh_button = UIButton(content, "refresh")
+        pre_button.grid(row=0, column=0)
+        forward_button.grid(row=0, column=1)
+        refresh_button.grid(row=0, column=2)
 
     def _create_toolbar(self):
         pass
